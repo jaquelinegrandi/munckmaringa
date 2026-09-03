@@ -1,0 +1,566 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+
+:root {
+
+    /* Brand colors */
+    --burgundy: #250404;
+    --gold: #FCA919;
+
+    /* Brand variations */
+    --dark-burgundy: #1A0202;
+    --light-burgundy: #3A0A0A;
+
+    --dark-gold: #D88A00;
+    --light-gold: #FFC34D;
+
+    /* Neutral colors */
+    --white: #FFFFFF;
+    --black: #000000;
+
+    --dark-gray: #2B2B2B;
+    --gray: #666666;
+    --light-gray: #888888;
+    --very-light-gray: #E5E5E5;
+
+    /* Backgrounds */
+    --background: #FFFFFF;
+    --light-background: #F8F7F5;
+    --gray-background: #F1EFEC;
+
+    /* Text */
+    --primary-text: #250404;
+    --text: #2B2B2B;
+    --secondary-text: #666666;
+    --light-text: #FFFFFF;
+
+    /* Borders */
+    --border: #E5E5E5;
+    --light-border: #EEEEEE;
+
+    /* Overlays */
+    --dark-overlay: rgba(37, 4, 4, 0.70);
+    --black-overlay: rgba(0, 0, 0, 0.45);
+    --white-overlay: rgba(255, 255, 255, 0.90);
+
+    /* Typography */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+
+    /* Font sizes */
+    --font-xs: 0.75rem;
+    --font-sm: 0.875rem;
+    --font-md: 1rem;
+    --font-lg: 1.125rem;
+    --font-xl: 1.25rem;
+    --font-2xl: 1.5rem;
+    --font-3xl: 2rem;
+    --font-4xl: 2.75rem;
+    --font-5xl: 3.5rem;
+
+    /* Font weights */
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    --space-4xl: 5rem;
+    --space-5xl: 7rem;
+
+    /* Container */
+    --container-width: 1180px;
+    --container-padding: 1.5rem;
+
+    /* Border radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.10);
+    --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.14);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Z-index */
+    --z-header: 1000;
+    --z-overlay: 1;
+    --z-content: 2;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: var(--z-header);
+
+    width: 100%;
+    background-color: transparent;
+
+    transition:
+        background-color var(--transition-normal),
+        backdrop-filter var(--transition-normal),
+        box-shadow var(--transition-normal),
+        border-color var(--transition-normal);
+}
+
+/* Header after scroll */
+
+.header.is-scrolled {
+    position: fixed;
+
+    background-color: rgba(37, 4, 4, 0.88);
+
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(-10px);
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.navbar {
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: var(--space-xl);
+}
+
+/* Logo */
+
+.navbar > a:first-child {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar > a:first-child img {
+    width: 155px;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2.5rem;
+
+    margin-left: auto;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu li a {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: 0.5rem 0;
+
+    color: var(--white);
+
+    font-family: var(--font-heading);
+    font-size: var(--font-sm);
+    font-weight: var(--font-semibold);
+
+    text-transform: uppercase;
+
+    transition:
+        color var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+.nav-menu li a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--gold);
+
+    transition: width var(--transition-normal);
+}
+
+.nav-menu li a:hover {
+    color: var(--gold);
+}
+
+.nav-menu li a:hover::after {
+    width: 100%;
+}
+
+
+/* Active item */
+
+.nav-menu li:first-of-type a {
+    color: var(--gold);
+}
+
+.nav-menu li:first-of-type a::after {
+    width: 100%;
+}
+/* ========================================
+   HEADER WHATSAPP
+======================================== */
+
+.navbar > a:last-child {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: var(--space-sm);
+
+    min-height: 48px;
+
+    padding: 0.75rem 1.25rem;
+
+    color: var(--burgundy);
+    background-color: var(--gold);
+
+    border-radius: var(--radius-sm);
+
+    font-family: var(--font-heading);
+    font-size: var(--font-sm);
+    font-weight: var(--font-bold);
+
+    transition:
+        background-color var(--transition-normal),
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
+}
+
+.navbar > a:last-child i {
+    font-size: 1.1rem;
+}
+
+.navbar > a:last-child:hover {
+    background-color: var(--light-gold);
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+/* ========================================
+   MOBILE MENU BUTTONS
+======================================== */
+
+.menu-toggle,
+.close-menu {
+    display: none;
+}
+
+
+/* ========================================
+   MAIN
+======================================== */
+
+main {
+    width: 100%;
+}
+
+section {
+    width: 100%;
+}
+
+
+/* ========================================
+   GENERIC SECTION CONTAINER
+======================================== */
+
+.containers-container,
+.about-container,
+.cta-container,
+.feature-container,
+.footer-container,
+.footer-bottom-container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin-inline: auto;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    width: 100%;
+    background-color: var(--burgundy);
+    color: var(--white);
+}
+
+
+/* ----------------------------------------
+   Footer main
+---------------------------------------- */
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.2fr;
+    gap: var(--space-4xl);
+
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-4xl);
+}
+
+
+/* ========================================
+   FOOTER BRAND
+======================================== */
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-brand > a {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: var(--space-lg);
+}
+
+.footer-brand > a img {
+    width: 155px;
+    height: auto;
+    object-fit: contain;
+}
+
+.footer-description {
+    max-width: 300px;
+
+    color: rgba(255, 255, 255, 0.78);
+    font-family: var(--font-body);
+
+    font-size: var(--font-sm);
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   FOOTER SOCIAL
+======================================== */
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+
+    margin-top: var(--space-lg);
+}
+
+.footer-social-link {
+    width: 38px;
+    height: 38px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--white);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+
+    transition:
+        color var(--transition-normal),
+        background-color var(--transition-normal),
+        border-color var(--transition-normal),
+        transform var(--transition-normal);
+}
+
+.footer-social-link i {
+    font-size: 1rem;
+}
+
+.footer-social-link:hover {
+    color: var(--burgundy);
+    background-color: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   FOOTER TITLES
+======================================== */
+
+.footer-title {
+    margin-bottom: var(--space-lg);
+
+    color: var(--white);
+
+    font-family: var(--font-heading);
+    font-size: var(--font-md);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   FOOTER NAVIGATION
+======================================== */
+
+.footer-navigation {
+    padding-left: var(--space-xl);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.footer-nav-list li a {
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: var(--font-sm);
+    font-family: var(--font-body);
+
+    transition:
+        color var(--transition-fast),
+        padding-left var(--transition-fast);
+}
+
+.footer-nav-list li a:hover {
+    color: var(--gold);
+    padding-left: 4px;
+}
+
+
+/* ========================================
+   FOOTER CONTACT
+======================================== */
+
+.footer-contact {
+    padding-left: var(--space-xl);
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: var(--font-sm);
+    font-family: var(--font-body);
+    transition: color var(--transition-fast);
+}
+
+.footer-contact-item i {
+    flex-shrink: 0;
+
+    width: 18px;
+
+    color: var(--gold);
+
+    font-size: 1rem;
+    text-align: center;
+}
+
+a.footer-contact-item:hover {
+    color: var(--gold);
+}
+
+
+/* ========================================
+   FOOTER BOTTOM
+======================================== */
+
+.footer-bottom {
+    width: 100%;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-bottom-container {
+    min-height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+}
+
+.footer-copyright,
+.footer-legal {
+    color: rgba(255, 255, 255, 0.55);
+
+    font-family: var(--font-body);
+    font-size: var(--font-xs);
+}
+
+.footer-legal a {
+    transition: color var(--transition-fast);
+}
+
+.footer-legal a:hover {
+    color: var(--gold);
+}
+
+
+/* ========================================
+   ACCESSIBILITY / INTERACTION
+======================================== */
+
+.nav-menu a,
+.footer a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
