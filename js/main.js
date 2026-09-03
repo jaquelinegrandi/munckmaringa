@@ -1,20 +1,32 @@
-/*SCROLL*/
+/* ========================================
+   HEADER SCROLL
+======================================== */
 
-const header = document.getElementById('header');
+const header = document.getElementById("header");
 
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('is-scrolled', window.scrollY > 40);
-    });
+window.addEventListener("scroll", () => {
+    if (header) {
+        header.classList.toggle(
+            "is-scrolled",
+            window.scrollY > 40
+        );
+    }
+});
 
 
-    /*MENU*/
+/* ========================================
+   MOBILE MENU
+======================================== */
 
-    document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     const openMenu = document.getElementById("open-menu");
     const closeMenu = document.getElementById("close-menu");
     const navMenu = document.getElementById("nav-menu");
-    const navLinks = navMenu.querySelectorAll("a");
+
+    if (!openMenu || !closeMenu || !navMenu) {
+        return;
+    }
 
 
     /* ========================================
@@ -22,8 +34,11 @@ const header = document.getElementById('header');
     ======================================== */
 
     openMenu.addEventListener("click", () => {
+
         navMenu.classList.add("active");
+
         document.body.classList.add("no-scroll");
+
     });
 
 
@@ -32,8 +47,11 @@ const header = document.getElementById('header');
     ======================================== */
 
     closeMenu.addEventListener("click", () => {
+
         navMenu.classList.remove("active");
+
         document.body.classList.remove("no-scroll");
+
     });
 
 
@@ -41,11 +59,18 @@ const header = document.getElementById('header');
        CLOSE MENU WHEN CLICKING A LINK
     ======================================== */
 
+    const navLinks = navMenu.querySelectorAll("a");
+
     navLinks.forEach((link) => {
+
         link.addEventListener("click", () => {
+
             navMenu.classList.remove("active");
+
             document.body.classList.remove("no-scroll");
+
         });
+
     });
 
 
@@ -56,22 +81,28 @@ const header = document.getElementById('header');
     document.addEventListener("keydown", (event) => {
 
         if (event.key === "Escape") {
+
             navMenu.classList.remove("active");
+
             document.body.classList.remove("no-scroll");
+
         }
 
     });
 
 
     /* ========================================
-       RESET MENU WHEN RESIZING TO DESKTOP
+       RESET MENU ON DESKTOP
     ======================================== */
 
     window.addEventListener("resize", () => {
 
         if (window.innerWidth > 767) {
+
             navMenu.classList.remove("active");
+
             document.body.classList.remove("no-scroll");
+
         }
 
     });
